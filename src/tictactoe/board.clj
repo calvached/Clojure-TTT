@@ -8,7 +8,7 @@
 
 (defn gameboard
   [size]
-  (into [] (repeat (raise-to-power size 2) " "))
+  (into [] (repeat (raise-to-power (read-string size) 2) " "))
 )
 
 (defn- index-of
