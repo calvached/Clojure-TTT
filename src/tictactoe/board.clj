@@ -1,7 +1,7 @@
 (ns tictactoe.board
   (:gen-class))
 
-(defn raise-to-power
+(defn- raise-to-power
   [base exponent]
   (reduce * (repeat exponent base))
 )
@@ -11,7 +11,7 @@
   (into [] (repeat (raise-to-power size 2) " "))
 )
 
-(defn index-of
+(defn- index-of
   [location]
   (- location 1)
 )

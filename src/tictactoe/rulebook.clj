@@ -1,27 +1,27 @@
 (ns tictactoe.rulebook
   (:gen-class))
 
-(defn dimensions
+(defn- dimensions
   [board]
   (int (Math/sqrt (count board)))
 )
 
-(defn rows
+(defn- rows
   [board]
   (map vec (partition (dimensions board) board))
 )
 
-(defn columns
+(defn- columns
   [board]
   (apply map vector (rows board))
 )
 
-(defn diagonal-indices
+(defn- diagonal-indices
   [board]
   (range 0 (dimensions board))
 )
 
-(defn left-diagonal
+(defn- left-diagonal
   [board]
   (reduce
     (fn [diagonals i]
@@ -31,47 +31,47 @@
     (diagonal-indices board))
 )
 
-(defn rotate
+(defn- rotate
   [board]
   (->> board (rows) (map reverse) (flatten) (vec))
 )
 
-(defn right-diagonal
+(defn- right-diagonal
   [board]
   (left-diagonal(rotate board))
 )
 
-(defn diagonals
+(defn- diagonals
   [board]
   [(left-diagonal board) (right-diagonal board)]
 )
 
-(defn possibilities
+(defn- possibilities
   [board]
   (vec (concat (rows board) (columns board) (diagonals board)))
 )
 
-(defn single-piece-in
+(defn- single-piece-in
   [subspace]
   (= 1 (count (distinct subspace)))
 )
 
-(defn get-game-piece
+(defn- get-game-piece
   [subspace]
   (first (distinct subspace))
 )
 
-(defn not-an-empty
+(defn- not-an-empty
   [subspace]
   (not= " " (get-game-piece subspace))
 )
 
-(defn is-win?
+(defn- is-win?
   [subspace]
   (and (not-an-empty subspace) (single-piece-in subspace))
 )
 
-(defn is-full?
+(defn- is-full?
   [board]
   (if (some #{" "} board) false true)
 )
@@ -84,7 +84,7 @@
     (possibilities board))))
 )
 
-(defn winner-found?
+(defn- winner-found?
   [board]
   (if (winning-game-piece board) true false)
 )
