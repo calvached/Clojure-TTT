@@ -2,6 +2,6 @@
   (:gen-class))
 
 (defn make-move
-  [board assigned-piece]
+  [board]
   (rand-int (count board))
 )

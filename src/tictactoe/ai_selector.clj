@@ -4,5 +4,5 @@
 
 (defn get-move
   [difficulty board assigned-piece]
-  (if (= difficulty "Easy") (easy-ai/make-move board assigned-piece))
+  (if (= difficulty "Easy") (easy-ai/make-move board))
 )
