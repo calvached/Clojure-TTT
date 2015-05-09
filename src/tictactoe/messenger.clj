@@ -12,3 +12,9 @@
 (defn invalid-selection []
   (println "Invalid selection. Try again.")
 )
+
+(defn winning-message
+  [piece]
+  (print piece)
+  (println " has won!")
+)

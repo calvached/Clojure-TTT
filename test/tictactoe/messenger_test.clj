@@ -22,4 +22,9 @@
     (is (= "Invalid selection. Try again.\n"
            (with-out-str (invalid-selection))))
   )
+
+  (testing "prints a winning message"
+    (is (= "X has won!\n"
+           (with-out-str (winning-message "X"))))
+  )
 )
