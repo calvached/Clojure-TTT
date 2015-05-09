@@ -9,7 +9,7 @@
   )
 
   (testing "asks a player to input a space to place a piece"
-    (is (= "Please enter a number to place your piece on: "
+    (is (= "Please enter a number to place your piece on: \n"
            (with-out-str (ask-for-piece-placement))))
   )
 
@@ -19,7 +19,12 @@
   )
 
   (testing "prints a message to choose again"
-    (is (= "Choose again: "
-           (with-out-str (choose-again))))
+    (is (= "Invalid selection. Try again.\n"
+           (with-out-str (invalid-selection))))
+  )
+
+  (testing "prints a winning message"
+    (is (= "X has won!\n"
+           (with-out-str (winning-message "X"))))
   )
 )
