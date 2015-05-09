@@ -6,9 +6,9 @@
 )
 
 (defn ask-for-piece-placement []
-  (print "Please enter a number to place your piece on: ")
+  (println "Please enter a number to place your piece on: ")
 )
 
-(defn choose-again []
-  (print "Choose again: ")
+(defn invalid-selection []
+  (println "Invalid selection. Try again.")
 )
