@@ -28,13 +28,8 @@
   )
 
   (testing "it places a piece on the board"
-    (is (= [" " " " " " " " "X" " " " " " " " "]
+    (is (= [" " " " " " " " " " "X" " " " " " "]
            (place-piece 5 "X" [" " " " " " " " " " " " " " " " " "])))
-  )
-
-  (testing "it does not place a piece if a piece exists in a cell"
-    (is (= ["O" " " " " " " "X" " " " " " " " "]
-           (place-piece 1 "X" ["O" " " " " " " "X" " " " " " " " "])))
   )
 
   (testing "returns a list of indices for all available cells"

@@ -11,11 +11,6 @@
   (into [] (repeat (raise-to-power (read-string size) 2) " "))
 )
 
-(defn- index-of
-  [location]
-  (- location 1)
-)
-
 (defn valid-placement?
   [location board]
   (= (get board location) " ")
@@ -23,10 +18,7 @@
 
 (defn place-piece
   [location piece board]
-  (if
-    (valid-placement? (index-of location) board)
-    (assoc board (index-of location) piece)
-    board)
+  (assoc board location piece)
 )
 
 (defn available-cells
