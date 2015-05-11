@@ -1,4 +1,5 @@
 (ns tictactoe.messenger
+  (:use [tictactoe.templater])
   (:gen-class))
 
 (defn welcome []
@@ -17,4 +18,13 @@
   [piece]
   (print piece)
   (println " has won!")
+)
+
+(defn- dimension [board]
+  (int (Math/sqrt (count board)))
+)
+
+(defn display
+  [board]
+  (println (create-template-for board (dimension board)))
 )

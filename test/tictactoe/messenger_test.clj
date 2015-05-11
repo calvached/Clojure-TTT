@@ -27,4 +27,11 @@
     (is (= "X has won!\n"
            (with-out-str (winning-message "X"))))
   )
+
+  (testing "prints a board"
+    (is (= "1  |  2  |  3\n4  |  5  |  6\n7  |  8  |  9\n\n"
+           (with-out-str (display [" " " " " "
+                                   " " " " " "
+                                   " " " " " "]))))
+  )
 )
