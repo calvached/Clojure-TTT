@@ -3,7 +3,7 @@
             [tictactoe.game :refer :all]))
 
 (deftest game-test
-  (testing "prints the winner on game over"
+  (testing "prints an end game message"
     (with-redefs [tictactoe.messenger/welcome (fn [] "")
                   tictactoe.messenger/display (fn [board] "")
                   tictactoe.messenger/winning-message (fn [piece] (println "Game finished"))
