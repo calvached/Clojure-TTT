@@ -1,6 +1,6 @@
 (ns tictactoe.game
   (:use [tictactoe.board :only [gameboard valid-placement? place-piece]])
-  (:use [tictactoe.rulebook :only [game-over? winning-game-piece]])
+  (:use [tictactoe.rulebook :only [game-over? winning-game-piece draw?]])
   (:use [tictactoe.messenger])
   (:use [tictactoe.human :only [make-move]])
   (:use [tictactoe.ai-selector :only [get-move]])
@@ -33,6 +33,12 @@
     (prompt-valid-move board player))
 )
 
+(defn- determine-results
+  [board]
+  (if (draw? board) (draw-message)
+    (winning-message (winning-game-piece board)))
+)
+
 (defn run
   [settings]
   (welcome)
@@ -43,7 +49,7 @@
 
     (display board)
 
-    (if (game-over? board) (winning-message (winning-game-piece board))
+    (if (game-over? board) (determine-results board)
       (let [move (get-player-move difficulty board current-player)]
         (let [next-board (place-piece move current-player board)]
           (recur next-board difficulty next-player current-player)
