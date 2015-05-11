@@ -89,7 +89,12 @@
   (if (winning-game-piece board) true false)
 )
 
+(defn draw?
+  [board]
+  (and (not (winner-found? board)) (is-full? board))
+)
+
 (defn game-over?
   [board]
-  (or (winner-found? board) (is-full? board))
+  (or (winner-found? board) (draw? board))
 )
