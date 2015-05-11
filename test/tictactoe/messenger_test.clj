@@ -34,4 +34,9 @@
                                    " " " " " "
                                    " " " " " "]))))
   )
+
+  (testing "prints a draw message"
+    (is (= "Draw Game!!\n"
+           (with-out-str (draw-message))))
+  )
 )

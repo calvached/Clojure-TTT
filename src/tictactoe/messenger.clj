@@ -28,3 +28,7 @@
   [board]
   (println (create-template-for board (dimension board)))
 )
+
+(defn draw-message []
+  (println "Draw Game!!")
+)
