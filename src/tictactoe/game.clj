@@ -6,7 +6,7 @@
   (:use [tictactoe.ai-selector :only [get-move]])
   (:gen-class))
 
-(defn- prompt-valid-move
+(defn- prompt-human-move
   [board player]
   (ask-for-piece-placement)
   (loop [move (make-move board player)]
@@ -19,18 +19,15 @@
   )
 )
 
-(defn- prompt-valid-ai-move
+(defn- ai-move
   [difficulty board player]
-  (loop [move (get-move difficulty board player)]
-    (if (valid-placement? move board) move
-        (recur (get-move difficulty board player)))
-  )
+  (get-move difficulty board player)
 )
 
 (defn- get-player-move
   [difficulty board player]
-  (if (= player "X") (prompt-valid-ai-move difficulty board player)
-    (prompt-valid-move board player))
+  (if (= player "X") (ai-move difficulty board player)
+    (prompt-human-move board player))
 )
 
 (defn- determine-results
