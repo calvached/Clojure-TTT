@@ -30,4 +30,18 @@
                         " " "O" " "
                         " " "O" " "])))
   )
+
+  (testing "it returns true if the game is a draw"
+    (is (= true
+           (draw? ["O" "X" "O"
+                   "X" "O" "X"
+                   "X" "O" "X"])))
+  )
+
+  (testing "it returns false if the game is not a draw"
+    (is (= false
+           (draw? ["X" "O" "O"
+                   "O" "X" "O"
+                   "O" "O" "X"])))
+  )
 )
