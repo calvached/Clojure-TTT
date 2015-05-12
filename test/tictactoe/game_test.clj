@@ -31,10 +31,8 @@
 
   (testing "it plays the game"
     (with-redefs [tictactoe.messenger/welcome (fn [] "")
-                  tictactoe.messenger/display (fn [board] "")
-                  tictactoe.board/gameboard (fn [size] [" " " " " "
-                                                        " " " " " "
-                                                        " " " " " "])]
+                  tictactoe.messenger/display (fn [board] "")]
+
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"
                                                   :difficulty "Easy"

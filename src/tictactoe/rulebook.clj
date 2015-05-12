@@ -3,42 +3,34 @@
 
 (defn- dimensions
   [board]
-  (int (Math/sqrt (count board)))
-)
-
-(defn- rows
-  [board]
-  (map vec (partition (dimensions board) board))
+  (count board)
 )
 
 (defn- columns
   [board]
-  (apply map vector (rows board))
-)
-
-(defn- diagonal-indices
-  [board]
-  (range 0 (dimensions board))
+  (apply map vector board)
 )
 
 (defn- left-diagonal
   [board]
   (reduce
-    (fn [diagonals i]
-      (conj diagonals (nth (nth (rows board) i) i))
+    (fn [cells index]
+      (conj cells(get (get board index) index))
     )
     []
-    (diagonal-indices board))
-)
-
-(defn- rotate
-  [board]
-  (->> board (rows) (map reverse) (flatten) (vec))
+    (range (dimensions board))
+  )
 )
 
 (defn- right-diagonal
   [board]
-  (left-diagonal(rotate board))
+  (reduce
+    (fn [cells index]
+      (conj cells(get (get board index) (- (- (dimensions board) 1) index)))
+    )
+    []
+    (range (dimensions board))
+  )
 )
 
 (defn- diagonals
@@ -48,7 +40,7 @@
 
 (defn- possibilities
   [board]
-  (vec (concat (rows board) (columns board) (diagonals board)))
+  (vec (concat board (columns board) (diagonals board)))
 )
 
 (defn- single-piece-in
@@ -71,9 +63,18 @@
   (and (not-an-empty subspace) (single-piece-in subspace))
 )
 
+(defn- is-row-filled?
+  [row]
+  (if (some #{" "} row) "false" "true")
+)
+
 (defn- is-full?
   [board]
-  (if (some #{" "} board) false true)
+
+  (if (some #{"false"} (map
+    (fn [row]
+      (is-row-filled? row))
+      board)) false true)
 )
 
 (defn winning-game-piece
@@ -81,7 +82,8 @@
   (first (remove nil? (map
     (fn [combo]
       (if (is-win? combo) (get-game-piece combo)))
-    (possibilities board))))
+    (possibilities board)))
+  )
 )
 
 (defn- winner-found?
