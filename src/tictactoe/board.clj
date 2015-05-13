@@ -6,19 +6,37 @@
   (reduce * (repeat exponent base))
 )
 
+(defn- board-1d
+  [size]
+  (into [] (repeat (raise-to-power size 2) " "))
+)
+
+(defn- convert-to-2d
+  [board size]
+  (into [] (map vec (partition size board)))
+)
+
 (defn gameboard
   [size]
-  (into [] (repeat (raise-to-power (read-string size) 2) " "))
+  (convert-to-2d (board-1d (read-string size)) (read-string size))
+)
+
+(defn- convert-to-1d
+  [board]
+  (into [] (flatten board))
 )
 
 (defn valid-placement?
   [location board]
-  (= (get board location) " ")
+  (= (get (convert-to-1d board) location) " ")
 )
 
 (defn place-piece
   [location piece board]
-  (assoc board location piece)
+  (convert-to-2d
+    (assoc (convert-to-1d board) location piece)
+    (count board)
+  )
 )
 
 (defn available-cells
@@ -28,5 +46,5 @@
       (map-indexed
         (fn [i cell]
           (if (= cell " ") i))
-        board)))
+        (convert-to-1d board))))
 )
