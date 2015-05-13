@@ -4,9 +4,9 @@
 
 (deftest templater-test
   (testing "returns a formatted board string"
-    (is (= "1  |  2  |  3\n4  |  5  |  6\n7  |  8  |  9\n"
-           (create-template-for [" " " " " "
-                                 " " " " " "
-                                 " " " " " "] 3)))
+    (is (= "  |   |  \n--|---|--\n  |   |  \n--|---|--\n  |   |  \n\n"
+           (create-template-for [[" " " " " "]
+                                 [" " " " " "]
+                                 [" " " " " "]] 3)))
   )
 )

@@ -1,26 +1,33 @@
 (ns tictactoe.templater
   (:gen-class))
 
-(defn- cell-filler [index cell-contents]
-  (if (= cell-contents " ") (+ index 1) cell-contents)
+(defn- cell-separator [row-size index]
+  (if (= index (- row-size 1)) "\n" " | ")
 )
 
-(defn- end-of-row? [index dimension]
-  (= (rem index dimension) (- dimension 1))
-)
-
-(defn- create-row [index dimension]
-  (if (end-of-row? index dimension) "\n" "  |  ")
-)
-
-(defn create-template-for [board dimension]
+(defn- row-formatter
+  [row]
   (apply str
     (map-indexed
-      (fn [index cell-contents]
-        (str (cell-filler index cell-contents)
-             (create-row index dimension))
+      (fn [index cell]
+        (str cell (cell-separator (count row) index))
       )
-      board
+      row)
+  )
+)
+
+(defn- row-separator [board-size index]
+  (if (= index (- board-size 1)) "\n" "--|---|--\n")
+)
+
+(defn create-template-for
+  [board dimension]
+  (apply str
+    (map-indexed
+      (fn [index row]
+        (str (row-formatter row) (row-separator (count board) index))
+      )
+       board
     )
   )
 )

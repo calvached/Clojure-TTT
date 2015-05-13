@@ -36,11 +36,6 @@
     (winning-message (winning-game-piece board)))
 )
 
-(defn convert-to-2d
-  [board]
-  (into [] (map vec (partition 3 board)))
-)
-
 (defn run
   [settings]
   (welcome)
@@ -51,7 +46,7 @@
 
     (display board)
 
-    (if (game-over? (convert-to-2d board)) (determine-results (convert-to-2d board))
+    (if (game-over? board) (determine-results board)
       (let [move (get-player-move difficulty board current-player)]
         (let [next-board (place-piece move current-player board)]
           (recur next-board difficulty next-player current-player)
