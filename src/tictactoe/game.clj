@@ -20,14 +20,14 @@
 )
 
 (defn- ai-move
-  [difficulty board player]
-  (get-move difficulty board player)
+  [difficulty board player opponent]
+  (get-move difficulty board player opponent)
 )
 
 (defn- get-player-move
-  [difficulty board player]
-  (if (= player "X") (ai-move difficulty board player)
-    (prompt-human-move board player))
+  [difficulty board current-player next-player]
+  (if (= current-player "X") (ai-move difficulty board current-player next-player)
+    (prompt-human-move board current-player))
 )
 
 (defn- determine-results
@@ -47,7 +47,7 @@
     (display board)
 
     (if (game-over? board) (determine-results board)
-      (let [move (get-player-move difficulty board current-player)]
+      (let [move (get-player-move difficulty board current-player next-player)]
         (let [next-board (place-piece move current-player board)]
           (recur next-board difficulty next-player current-player)
         )
