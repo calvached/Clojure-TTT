@@ -3,5 +3,5 @@
 
 (defn make-move
   [board assigned-piece]
-  (- (Integer. (read-line)) 1)
+  (read-line)
 )

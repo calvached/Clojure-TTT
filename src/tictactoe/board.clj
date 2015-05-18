@@ -18,7 +18,7 @@
 
 (defn gameboard
   [size]
-  (convert-to-2d (board-1d (read-string size)) (read-string size))
+  (convert-to-2d (board-1d size) size)
 )
 
 (defn- convert-to-1d
