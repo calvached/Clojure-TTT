@@ -4,7 +4,7 @@
 (def player1 "X")
 (def player2 "O")
 (def difficulty "Hard")
-(def board-size "3")
+(def board-size 3)
 
 (defn settings []
   {

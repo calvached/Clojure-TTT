@@ -4,8 +4,8 @@
 
 (deftest human-test
   (testing "it gets an index for a number inputed by the user"
-    (is (= 2 (with-in-str "3" (make-move [" " " " " "
-                                          " " " " " "
-                                          " " " " " "] "X"))))
+    (is (= "3" (with-in-str "3" (make-move [" " " " " "
+                                            " " " " " "
+                                            " " " " " "] "X"))))
   )
 )

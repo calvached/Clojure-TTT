@@ -13,7 +13,7 @@
         (is (= "Game has Winner!\n" (with-out-str (run {:player1 "X"
                                                         :player2 "O"
                                                         :difficulty "Easy"
-                                                        :board-size "3"})))))
+                                                        :board-size 3})))))
   )
 
   (testing "prints a draw game message on game over"
@@ -26,7 +26,7 @@
         (is (= "Game is Draw!\n" (with-out-str (run {:player1 "X"
                                                      :player2 "O"
                                                      :difficulty "Easy"
-                                                     :board-size "3"})))))
+                                                     :board-size 3})))))
   )
 
   (testing "it plays the game with an easy ai"
@@ -36,7 +36,7 @@
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"
                                                   :difficulty "Easy"
-                                                  :board-size "3"})))))
+                                                  :board-size 3})))))
   )
 
   (testing "it plays the game with a hard ai"
@@ -46,6 +46,6 @@
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"
                                                   :difficulty "Hard"
-                                                  :board-size "3"})))))
+                                                  :board-size 3})))))
   )
 )

@@ -2,15 +2,21 @@
   (:use [tictactoe.board :only [gameboard valid-placement? place-piece]])
   (:use [tictactoe.rulebook :only [game-over? winning-game-piece draw?]])
   (:use [tictactoe.messenger])
+  (:use [tictactoe.validator])
   (:use [tictactoe.human :only [make-move]])
   (:use [tictactoe.ai-selector :only [get-move]])
   (:gen-class))
+
+(defn- move-valid?
+  [board move]
+  (and (valid-input? move) (valid-placement? (read-string move) board))
+)
 
 (defn- prompt-human-move
   [board player]
   (ask-for-piece-placement)
   (loop [move (make-move board player)]
-    (if (valid-placement? move board) move
+    (if (move-valid? board move) (read-string move)
       (do
         (invalid-selection)
         (recur (make-move board player))

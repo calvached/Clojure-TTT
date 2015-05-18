@@ -6,7 +6,7 @@
   (testing "it creates a board with 9 cells"
     (is (= [[" " " " " "]
             [" " " " " "]
-            [" " " " " "]] (gameboard "3")))
+            [" " " " " "]] (gameboard 3)))
   )
 
   (testing "it creates a board with 25 cells"
@@ -14,7 +14,7 @@
             [" " " " " " " " " "]
             [" " " " " " " " " "]
             [" " " " " " " " " "]
-            [" " " " " " " " " "]] (gameboard "5")))
+            [" " " " " " " " " "]] (gameboard 5)))
   )
 
   (testing "returns true if cell is not occupied"
