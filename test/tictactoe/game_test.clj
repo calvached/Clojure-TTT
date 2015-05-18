@@ -29,13 +29,23 @@
                                                      :board-size "3"})))))
   )
 
-  (testing "it plays the game"
+  (testing "it plays the game with an easy ai"
     (with-redefs [tictactoe.messenger/welcome (fn [] "")
                   tictactoe.messenger/display (fn [board] "")]
 
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"
                                                   :difficulty "Easy"
+                                                  :board-size "3"})))))
+  )
+
+  (testing "it plays the game with a hard ai"
+    (with-redefs [tictactoe.messenger/welcome (fn [] "")
+                  tictactoe.messenger/display (fn [board] "")]
+
+        (is (= "X has won!\n" (with-out-str (run {:player1 "X"
+                                                  :player2 "X"
+                                                  :difficulty "Hard"
                                                   :board-size "3"})))))
   )
 )
