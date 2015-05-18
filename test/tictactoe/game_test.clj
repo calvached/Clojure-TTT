@@ -4,9 +4,9 @@
 
 (deftest game-test
   (testing "prints a winning game message on game over"
-    (with-redefs [tictactoe.messenger/welcome (fn [] "")
-                  tictactoe.messenger/display (fn [board] "")
-                  tictactoe.messenger/winning-message (fn [piece] (println "Game has Winner!"))
+    (with-redefs [tictactoe.ui.messenger/welcome (fn [] "")
+                  tictactoe.ui.messenger/display (fn [board] "")
+                  tictactoe.ui.messenger/winning-message (fn [piece] (println "Game has Winner!"))
                   tictactoe.board/gameboard (fn [size] [["X" "O" "O"]
                                                         ["O" "X" "O"]
                                                         ["O" "O" "X"]])]
@@ -17,9 +17,9 @@
   )
 
   (testing "prints a draw game message on game over"
-    (with-redefs [tictactoe.messenger/welcome (fn [] "")
-                  tictactoe.messenger/display (fn [board] "")
-                  tictactoe.messenger/draw-message (fn [] (println "Game is Draw!"))
+    (with-redefs [tictactoe.ui.messenger/welcome (fn [] "")
+                  tictactoe.ui.messenger/display (fn [board] "")
+                  tictactoe.ui.messenger/draw-message (fn [] (println "Game is Draw!"))
                   tictactoe.board/gameboard (fn [size] [["X" "O" "X"]
                                                         ["X" "O" "O"]
                                                         ["O" "X" "X"]])]
@@ -30,8 +30,8 @@
   )
 
   (testing "it plays the game with an easy ai"
-    (with-redefs [tictactoe.messenger/welcome (fn [] "")
-                  tictactoe.messenger/display (fn [board] "")]
+    (with-redefs [tictactoe.ui.messenger/welcome (fn [] "")
+                  tictactoe.ui.messenger/display (fn [board] "")]
 
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"
@@ -40,8 +40,8 @@
   )
 
   (testing "it plays the game with a hard ai"
-    (with-redefs [tictactoe.messenger/welcome (fn [] "")
-                  tictactoe.messenger/display (fn [board] "")]
+    (with-redefs [tictactoe.ui.messenger/welcome (fn [] "")
+                  tictactoe.ui.messenger/display (fn [board] "")]
 
         (is (= "X has won!\n" (with-out-str (run {:player1 "X"
                                                   :player2 "X"

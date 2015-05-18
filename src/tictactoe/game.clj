@@ -1,7 +1,7 @@
 (ns tictactoe.game
   (:use [tictactoe.board :only [gameboard valid-placement? place-piece]])
   (:use [tictactoe.rulebook :only [game-over? winning-game-piece draw?]])
-  (:use [tictactoe.messenger])
+  (:use [tictactoe.ui.messenger])
   (:use [tictactoe.validator])
   (:use [tictactoe.human :only [make-move]])
   (:use [tictactoe.ai-selector :only [get-move]])

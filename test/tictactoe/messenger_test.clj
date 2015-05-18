@@ -1,6 +1,6 @@
 (ns tictactoe.messenger-test
   (:require [clojure.test :refer :all]
-            [tictactoe.messenger :refer :all]))
+            [tictactoe.ui.messenger :refer :all]))
 
 (deftest messenger-test
   (testing "prints a welcome message"

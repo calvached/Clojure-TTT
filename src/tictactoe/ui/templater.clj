@@ -1,4 +1,4 @@
-(ns tictactoe.templater
+(ns tictactoe.ui.templater
   (:gen-class))
 
 (defn- cell-separator [row-size index]

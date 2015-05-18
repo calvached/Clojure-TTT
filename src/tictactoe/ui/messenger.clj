@@ -1,5 +1,5 @@
-(ns tictactoe.messenger
-  (:use [tictactoe.templater])
+(ns tictactoe.ui.messenger
+  (:use [tictactoe.ui.templater])
   (:gen-class))
 
 (defn welcome []
