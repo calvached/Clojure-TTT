@@ -7,6 +7,4 @@
   [difficulty board assigned-piece opponent-piece]
   (cond
     (= difficulty "Easy") (easy-ai/make-move board)
-    (= difficulty "Hard") (hard-ai/make-move board assigned-piece opponent-piece)
-  )
-)
+    (= difficulty "Hard") (hard-ai/make-move board assigned-piece opponent-piece)))

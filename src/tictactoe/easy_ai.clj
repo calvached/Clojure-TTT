@@ -4,5 +4,4 @@
 
 (defn make-move
   [board]
-  (rand-nth (available-cells board))
-)
+  (rand-nth (available-cells board)))

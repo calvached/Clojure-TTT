@@ -2,8 +2,7 @@
   (:gen-class))
 
 (defn- cell-separator [row-size index]
-  (if (= index (- row-size 1)) "\n" " | ")
-)
+  (if (= index (- row-size 1)) "\n" " | "))
 
 (defn- row-formatter
   [row]
@@ -12,22 +11,15 @@
       (fn [index cell]
         (str cell (cell-separator (count row) index))
       )
-      row)
-  )
-)
+      row)))
 
 (defn- row-separator [board-size index]
-  (if (= index (- board-size 1)) "\n" "--|---|--\n")
-)
+  (if (= index (- board-size 1)) "\n" "--|---|--\n"))
 
 (defn create-template-for
   [board dimension]
   (apply str
     (map-indexed
       (fn [index row]
-        (str (row-formatter row) (row-separator (count board) index))
-      )
-       board
-    )
-  )
-)
+        (str (row-formatter row) (row-separator (count board) index)))
+       board)))

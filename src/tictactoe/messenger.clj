@@ -3,32 +3,25 @@
   (:gen-class))
 
 (defn welcome []
-  (println "Welcome To Tic Tac Toe!")
-)
+  (println "Welcome To Tic Tac Toe!"))
 
 (defn ask-for-piece-placement []
-  (println "Please enter a number to place your piece on: ")
-)
+  (println "Please enter a number to place your piece on: "))
 
 (defn invalid-selection []
-  (println "Invalid selection. Try again.")
-)
+  (println "Invalid selection. Try again."))
 
 (defn winning-message
   [piece]
   (print piece)
-  (println " has won!")
-)
+  (println " has won!"))
 
 (defn- dimension [board]
-  (int (Math/sqrt (count board)))
-)
+  (int (Math/sqrt (count board))))
 
 (defn display
   [board]
-  (println (create-template-for board (dimension board)))
-)
+  (println (create-template-for board (dimension board))))
 
 (defn draw-message []
-  (println "Draw Game!!")
-)
+  (println "Draw Game!!"))

@@ -9,38 +9,31 @@
 
 (defn- move-valid?
   [board move]
-  (and (valid-input? move) (valid-placement? (read-string move) board))
-)
+  (and (valid-input? move) (valid-placement? (dec (read-string move)) board)))
 
 (defn- prompt-human-move
   [board player]
   (ask-for-piece-placement)
   (loop [move (make-move board player)]
-    (if (move-valid? board move) (read-string move)
+    (if (move-valid? board move)
+      (dec (read-string move))
       (do
         (invalid-selection)
-        (recur (make-move board player))
-      )
-    )
-  )
-)
+        (recur (make-move board player))))))
 
 (defn- ai-move
   [difficulty board player opponent]
-  (get-move difficulty board player opponent)
-)
+  (get-move difficulty board player opponent))
 
 (defn- get-player-move
   [difficulty board current-player next-player]
   (if (= current-player "X") (ai-move difficulty board current-player next-player)
-    (prompt-human-move board current-player))
-)
+    (prompt-human-move board current-player)))
 
 (defn- determine-results
   [board]
   (if (draw? board) (draw-message)
-    (winning-message (winning-game-piece board)))
-)
+    (winning-message (winning-game-piece board))))
 
 (defn run
   [settings]
@@ -55,9 +48,4 @@
     (if (game-over? board) (determine-results board)
       (let [move (get-player-move difficulty board current-player next-player)]
         (let [next-board (place-piece move current-player board)]
-          (recur next-board difficulty next-player current-player)
-        )
-      )
-    )
-  )
-)
+          (recur next-board difficulty next-player current-player))))))

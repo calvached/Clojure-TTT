@@ -5,5 +5,4 @@
 
 (defn -main
   [& args]
-  (run (settings))
-)
+  (run (settings)))

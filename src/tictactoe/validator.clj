@@ -3,5 +3,4 @@
 
 (defn valid-input?
   [input]
-  (if (number? (read-string input)) true false)
-)
+  (if (number? (read-string input)) true false))
